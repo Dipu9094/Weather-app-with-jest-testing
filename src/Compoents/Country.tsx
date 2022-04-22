@@ -23,6 +23,7 @@ const Country = () => {
 
     const [countryInfo, setCountryInfo] = useState<InitCountryInfo>();
     const [weatherInfo, setWeatherInfo] = useState<InitWeatherInfo>();
+    const [notFound, setnotFound] = useState<boolean>(false)
 
     useEffect(() => {
         getCountryInfo();
@@ -33,7 +34,15 @@ const Country = () => {
         try {
             setLoading(true);
 
-            await getCountryData(name).then((data) => setCountryInfo(data[0]));
+            await getCountryData(name).then((data) => {
+                setCountryInfo(data[0])
+                if(data.status===404){
+                    setnotFound(true)
+                }
+            
+
+                
+            });
 
             setLoading(false);
         } catch (e) {
@@ -69,7 +78,7 @@ const Country = () => {
             {loading ? (
                 <CircularProgress />
             ) : countryInfo ? (
-                <Card style={{ display: "flex", padding: "10px" }}>
+                <Card style={{ display: "flex", padding: "10px" ,background:'gray'}}>
                     <Box sx={{ mr: 2 }}>
                         <Typography>
                             {countryInfo?.name?.common} Information
@@ -100,9 +109,15 @@ const Country = () => {
                         alt="Live from Country Api"
                     />
                 </Card>
-            ) : (
+            ) : 
+            
+                ''
+            }
+
+            {
+                notFound &&
                 <Box>
-                    <Typography color="red">Name Doesn't match!!</Typography>
+                    <Typography color="red">Country not Found!!</Typography>
                     <Link href="/" style={{ textDecoration: "none" }}>
                         <Button
                             data-testid="try_again"
@@ -113,7 +128,7 @@ const Country = () => {
                         </Button>
                     </Link>
                 </Box>
-            )}
+            }
 
             {countryInfo && (
                 <Button
