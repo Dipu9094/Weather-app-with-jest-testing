@@ -6,7 +6,7 @@ const Home = () => {
     let href = `/country/${countryName}`;
 
     return (
-            <div data-testid="home">
+        <div data-testid="home">
             <Box
                 style={{
                     display: "grid",
@@ -19,7 +19,7 @@ const Home = () => {
             >
                 <Typography style={{ textAlign: "center" }}> Home</Typography>
                 <TextField
-                    placeholder="Please input a country name"
+                    placeholder="Enter country"
                     onChange={(e) => setcountryName(e.target.value)}
                     defaultValue={countryName}
                     inputProps={{
@@ -35,10 +35,9 @@ const Home = () => {
                         color="primary"
                         disabled={!countryName}
                         variant="contained"
-                    data-testid="submit"
-
+                        data-testid="submit"
                     >
-                        Get Details
+                        Submit
                     </Button>
                 </Link>
             </Box>

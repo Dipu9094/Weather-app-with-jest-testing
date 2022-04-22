@@ -17,3 +17,8 @@ export interface InitCountryInfo {
     precip: number;
   }
   
+
+  export interface ititNotFound{
+    status:number,
+    message:string
+  }
