@@ -2,7 +2,6 @@ import {
     Box,
     Button,
     Card,
-    CardContent,
     CardMedia,
     CircularProgress,
     Link,
@@ -67,15 +66,14 @@ const Country = () => {
                 gap: "20px",
             }}
         >
-            <h2>Country: {name}</h2>
-
             {loading ? (
                 <CircularProgress />
             ) : countryInfo ? (
                 <Card style={{ display: "flex", padding: "10px" }}>
-                    {/* <CardContent style={{flex:"1 0 auto"}}> */}
                     <Box sx={{ mr: 2 }}>
-                        <Typography>{name} Information</Typography>
+                        <Typography>
+                            {countryInfo?.name?.common} Information
+                        </Typography>
                         <Typography
                             data-testid="capital"
                             variant="subtitle1"
@@ -101,7 +99,6 @@ const Country = () => {
                         image={countryInfo?.flags.svg}
                         alt="Live from Country Api"
                     />
-                    {/* </CardContent> */}
                 </Card>
             ) : (
                 <Box>
@@ -134,36 +131,32 @@ const Country = () => {
                 </>
             ) : (
                 weatherInfo && (
-                    <Card style={{ display: "flex" }}>
-                        <Box
-                            style={{ display: "flex", flexDirection: "column" }}
-                        >
-                            <CardContent style={{ flex: "1 0 auto" }}>
-                                <Typography component="div" variant="h5">
-                                    {name}'s Capital {countryInfo?.capital[0]}{" "}
-                                    Weather Information
-                                </Typography>
-                                <CardMedia
-                                    component="img"
-                                    style={{
-                                        width: "100px",
-                                        height: "100px",
-                                        borderRadius: "50%",
-                                    }}
-                                    image={weatherInfo?.weather_icons[0]}
-                                    alt="Live from Country Api"
-                                />
-                                <Typography variant="subtitle1" component="div">
-                                    Temperature: {weatherInfo?.temperature}
-                                    <sup>o</sup> celcius
-                                </Typography>
-                                <Typography variant="subtitle1" component="div">
-                                    Wind Speed: {weatherInfo?.wind_speed} km/h
-                                </Typography>
-                                <Typography variant="subtitle1" component="div">
-                                    Precipt: {weatherInfo?.precip}
-                                </Typography>
-                            </CardContent>
+                    <Card>
+                        <Box style={{ padding: "10px" }}>
+                            <Typography component="div" variant="h5">
+                                {name}'s Capital {countryInfo?.capital[0]}{" "}
+                                Weather Information
+                            </Typography>
+                            <CardMedia
+                                component="img"
+                                style={{
+                                    width: "100px",
+                                    height: "100px",
+                                    borderRadius: "50%",
+                                }}
+                                image={weatherInfo?.weather_icons[0]}
+                                alt="Live from Country Api"
+                            />
+                            <Typography variant="subtitle1" component="div">
+                                Temperature: {weatherInfo?.temperature}
+                                <sup>o</sup> celcius
+                            </Typography>
+                            <Typography variant="subtitle1" component="div">
+                                Wind Speed: {weatherInfo?.wind_speed} km/h
+                            </Typography>
+                            <Typography variant="subtitle1" component="div">
+                                Precipt: {weatherInfo?.precip}
+                            </Typography>
                         </Box>
                     </Card>
                 )

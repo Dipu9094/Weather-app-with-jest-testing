@@ -5,6 +5,9 @@ export interface InitCountryInfo {
     flags: {
       svg: string;
     };
+    name:{
+      common:string
+    }
   }
   
   export interface InitWeatherInfo {

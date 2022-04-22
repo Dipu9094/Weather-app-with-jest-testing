@@ -5,6 +5,6 @@ export const getCountryData = async (name: string) => {
 
 export const getWeatherData = (capital: string | undefined) => {
     return fetch(
-        `http://api.weatherstack.com/current?access_key=39ebf5f7a9365e8f8fd51d43b7922862&query=${capital}`
+        `http://api.weatherstack.com/current?access_key=ffc041176594e68c0555718e137dd165&query=${capital}`
     ).then((res) => res.json());
 };
