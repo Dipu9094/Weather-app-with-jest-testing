@@ -78,7 +78,7 @@ const Country = () => {
             {loading ? (
                 <CircularProgress />
             ) : countryInfo ? (
-                <Card style={{ display: "flex", padding: "10px" ,background:'gray'}}>
+                <Card style={{ display: "flex", padding: "10px"}}>
                     <Box sx={{ mr: 2 }}>
                         <Typography>
                             {countryInfo?.name?.common} Information

@@ -1,5 +1,5 @@
 import * as API from "../Api/CountryApi";
-import { InitCountryInfo, InitWeatherInfo } from "../Interfaces/Interface";
+import { InitCountryInfo, inItNotFound, InitWeatherInfo } from "../Interfaces/Interface";
 
 const sampleData: InitCountryInfo[] =[ {
     capital: ["Delhi"],
@@ -20,6 +20,11 @@ const weatherData: InitWeatherInfo = {
     precip: 0,
 };
 
+const notFound:inItNotFound={
+    status:404,
+    message:'not found'
+}
+
 describe("Country api calling", () => {
     it("should render api calling", async() => {
         jest.spyOn(API, "getCountryData").mockImplementation(() => {
@@ -32,6 +37,7 @@ describe("Country api calling", () => {
     });
 });
 
+
 describe("Capital weather api", () => {
     it("should render capital weather", async() => {
         jest.spyOn(API, "getWeatherData").mockImplementation(() => {
@@ -39,6 +45,18 @@ describe("Capital weather api", () => {
         });
         return await API.getWeatherData("Delhi").then((data) => {
             expect(data).toBeDefined();
+        });
+    });
+});
+
+describe("Not Found from api", () => {
+    it("should render api calling fail", async() => {
+        jest.spyOn(API, "getCountryData").mockImplementation(() => {
+            return Promise.resolve(notFound);
+        });
+        return await API.getCountryData("3215461").then((data) => {
+            expect(data).toBeDefined();
+            expect(data.status).toEqual(404);
         });
     });
 });

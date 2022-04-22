@@ -18,7 +18,8 @@ export interface InitCountryInfo {
   }
   
 
-  export interface ititNotFound{
+  export interface inItNotFound{
     status:number,
     message:string
   }
+
