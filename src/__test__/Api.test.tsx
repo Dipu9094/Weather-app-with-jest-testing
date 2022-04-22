@@ -1,8 +1,8 @@
 import * as API from "../Api/CountryApi";
 import { InitCountryInfo, InitWeatherInfo } from "../Interfaces/Interface";
 
-const sampleData: InitCountryInfo = {
-    capital: ["New Delhi"],
+const sampleData: InitCountryInfo[] =[ {
+    capital: ["Delhi"],
     name: {
         common: "india",
     },
@@ -11,7 +11,7 @@ const sampleData: InitCountryInfo = {
     flags: {
         svg: "https://dsfdsa.com/in.svg",
     },
-};
+}]
 
 const weatherData: InitWeatherInfo = {
     temperature: 25,
@@ -21,17 +21,24 @@ const weatherData: InitWeatherInfo = {
 };
 
 describe("Country api calling", () => {
-    it("should render api calling", () => {
+    it("should render api calling", async() => {
         jest.spyOn(API, "getCountryData").mockImplementation(() => {
             return Promise.resolve(sampleData);
+        });
+        return await API.getCountryData("india").then((data) => {
+            expect(data).toBeDefined();
+            expect(data[0].capital[0]).toEqual("Delhi");
         });
     });
 });
 
 describe("Capital weather api", () => {
-    it("should render capital weather", () => {
+    it("should render capital weather", async() => {
         jest.spyOn(API, "getWeatherData").mockImplementation(() => {
             return Promise.resolve(weatherData);
+        });
+        return await API.getWeatherData("Delhi").then((data) => {
+            expect(data).toBeDefined();
         });
     });
 });
