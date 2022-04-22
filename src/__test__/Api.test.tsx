@@ -245,7 +245,7 @@ describe("Country api calling", () => {
 
 describe('Capital weather api', () => { 
     it('should render capital weather', () => {
-        jest.spyOn(API, "getCountryData").mockImplementation(() => {
+        jest.spyOn(API, "getWeatherData").mockImplementation(() => {
             return Promise.resolve(weatherData);
         });
     });

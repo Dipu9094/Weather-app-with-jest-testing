@@ -27,6 +27,7 @@ const Country = () => {
 
     useEffect(() => {
         getCountryInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getCountryInfo = async () => {
@@ -83,7 +84,7 @@ const Country = () => {
                     </Box>
                     <CardMedia
                         component="img"
-                        style={{ width: "300px" }}
+                        style={{ width: "300px"}}
                         image={countryInfo?.flags.svg}
                         alt="Live from Country Api"
                     />
