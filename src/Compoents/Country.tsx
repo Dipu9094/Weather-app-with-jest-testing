@@ -27,7 +27,7 @@ const Country = () => {
 
     useEffect(() => {
         getCountryInfo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getCountryInfo = async () => {
@@ -57,8 +57,7 @@ const Country = () => {
     };
     return (
         <div
-
-        data-testid='countryInfo'
+            data-testid="countryInfo"
             style={{
                 display: "grid",
                 justifyContent: "center",
@@ -77,14 +76,28 @@ const Country = () => {
                     {/* <CardContent style={{flex:"1 0 auto"}}> */}
                     <Box sx={{ mr: 2 }}>
                         <Typography>{name} Information</Typography>
-                        <Typography>Capital</Typography>
-                        <Typography>Popultaion:</Typography>
-                        <Typography>Latitude:</Typography>
-                        <Typography>Longitude: </Typography>
+                        <Typography
+                            data-testid="capital"
+                            variant="subtitle1"
+                            component="div"
+                        >
+                            Capital: {countryInfo?.capital[0]}
+                        </Typography>
+                        <Typography variant="subtitle1" component="div">
+                            Population: {countryInfo?.population}
+                        </Typography>
+                        <Typography variant="subtitle1" component="div">
+                            Latitude: {countryInfo?.latlng[0]}
+                            <sup>o</sup>
+                        </Typography>
+                        <Typography variant="subtitle1" component="div">
+                            Langitude: {countryInfo?.latlng[1]}
+                            <sup>o</sup>
+                        </Typography>
                     </Box>
                     <CardMedia
                         component="img"
-                        style={{ width: "300px"}}
+                        style={{ width: "300px" }}
                         image={countryInfo?.flags.svg}
                         alt="Live from Country Api"
                     />
@@ -94,7 +107,11 @@ const Country = () => {
                 <Box>
                     <Typography color="red">Name Doesn't match!!</Typography>
                     <Link href="/" style={{ textDecoration: "none" }}>
-                        <Button data-testid="try_again" variant="contained" color="secondary">
+                        <Button
+                            data-testid="try_again"
+                            variant="contained"
+                            color="secondary"
+                        >
                             Try Again
                         </Button>
                     </Link>

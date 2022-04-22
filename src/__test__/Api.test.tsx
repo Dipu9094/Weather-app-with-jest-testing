@@ -1,6 +1,5 @@
 import * as API from "../Api/CountryApi";
 
-
 const sampleData: any = {
     name: {
         common: "India",
@@ -191,49 +190,47 @@ const sampleData: any = {
     },
 };
 
-
-const weatherData:any={
-    "request": {
-        "type": "City",
-        "query": "New Delhi, India",
-        "language": "en",
-        "unit": "m"
+const weatherData: any = {
+    request: {
+        type: "City",
+        query: "New Delhi, India",
+        language: "en",
+        unit: "m",
     },
-    "location": {
-        "name": "New Delhi",
-        "country": "India",
-        "region": "Delhi",
-        "lat": "28.600",
-        "lon": "77.200",
-        "timezone_id": "Asia/Kolkata",
-        "localtime": "2022-04-22 02:06",
-        "localtime_epoch": 1650593160,
-        "utc_offset": "5.50"
+    location: {
+        name: "New Delhi",
+        country: "India",
+        region: "Delhi",
+        lat: "28.600",
+        lon: "77.200",
+        timezone_id: "Asia/Kolkata",
+        localtime: "2022-04-22 02:06",
+        localtime_epoch: 1650593160,
+        utc_offset: "5.50",
     },
-    "current": {
-        "observation_time": "08:36 PM",
-        "temperature": 25,
-        "weather_code": 386,
-        "weather_icons": [
-            "https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0032_thundery_showers_night.png"
+    current: {
+        observation_time: "08:36 PM",
+        temperature: 25,
+        weather_code: 386,
+        weather_icons: [
+            "https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0032_thundery_showers_night.png",
         ],
-        "weather_descriptions": [
-            "Light Rain With Thunderstorm, Dust Storm, Thunderstorm"
+        weather_descriptions: [
+            "Light Rain With Thunderstorm, Dust Storm, Thunderstorm",
         ],
-        "wind_speed": 19,
-        "wind_degree": 290,
-        "wind_dir": "WNW",
-        "pressure": 1010,
-        "precip": 0,
-        "humidity": 51,
-        "cloudcover": 75,
-        "feelslike": 25,
-        "uv_index": 1,
-        "visibility": 3,
-        "is_day": "no"
-    }
-}
-
+        wind_speed: 19,
+        wind_degree: 290,
+        wind_dir: "WNW",
+        pressure: 1010,
+        precip: 0,
+        humidity: 51,
+        cloudcover: 75,
+        feelslike: 25,
+        uv_index: 1,
+        visibility: 3,
+        is_day: "no",
+    },
+};
 
 describe("Country api calling", () => {
     it("should render api calling", () => {
@@ -243,10 +240,10 @@ describe("Country api calling", () => {
     });
 });
 
-describe('Capital weather api', () => { 
-    it('should render capital weather', () => {
+describe("Capital weather api", () => {
+    it("should render capital weather", () => {
         jest.spyOn(API, "getWeatherData").mockImplementation(() => {
             return Promise.resolve(weatherData);
         });
     });
- })
+});
